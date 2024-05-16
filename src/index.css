@@ -1,0 +1,16 @@
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-inline.ant-menu-root .ant-menu-submenu-title >.ant-menu-title-content {
+    font-size: 18px;
+    font-weight: 700;
+}
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-input-outlined {
+    width: 70%;
+}
+.rdw-editor-toolbar {
+    width: 70%;
+}
+.public-DraftStyleDefault-ltr {
+    padding:  20px;
+    border: 1px solid #7777778f;
+    width: 67%;
+    height: 100px;
+}
