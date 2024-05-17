@@ -6,7 +6,7 @@ import {
   Input,message, Popconfirm
 } from 'antd';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const { RangePicker } = DatePicker;
 const formItemLayout = {
   labelCol: {
@@ -57,7 +57,7 @@ const registration = () => {
         address:registrationData.address,
         password:registrationData.password
       })
-      setResult(data);
+      setResult(data.data);
       if(data.data == 'registrantion successfully done'){
         message.success(data.data + ' Please verify your email');
         setRegistrationData('')
@@ -186,7 +186,14 @@ const registration = () => {
         Sign Up
       </Button>
       </Popconfirm>
+      <Link to='/login'>
+      <Button style={{marginLeft:'20px',border:'1px solid #1677ff'}}  >
+        Go To Login
+      </Button>
+      </Link>
+      
     </Form.Item>
+    
   </Form>
   
     </>
