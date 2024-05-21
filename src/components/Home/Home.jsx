@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FunnelPlotOutlined, PlusSquareOutlined, ProductOutlined,  SettingOutlined, UserOutlined, UserSwitchOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Col, Menu, Row } from 'antd';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 function getItem(label, key, icon, children, type) {
@@ -42,6 +43,14 @@ function getItem(label, key, icon, children, type) {
 const Home = () => {
 
   const navigate = useNavigate()
+  const userData =useSelector(state=>state.userDetails.value)
+  console.log(userData,'okk');
+
+  useEffect(()=>{
+    if(!userData){
+      navigate('/login')
+    }
+  },[])
 
     const onClick = (e) => {
       navigate(e.key);

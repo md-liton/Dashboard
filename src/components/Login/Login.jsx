@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Button,
   Cascader,
@@ -12,6 +12,8 @@ import {
 } from 'antd';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../Slices/UserSlice';
 const { RangePicker } = DatePicker;
 const formItemLayout = {
   labelCol: {
@@ -35,6 +37,9 @@ const formItemLayout = {
 
 const Login = () => {
   const navigate =useNavigate()
+  const disptch = useDispatch()
+  
+
   const [open, setOpen] = useState(false);
   const [loginData,setLoginData]=useState({
     email:'',
@@ -46,7 +51,7 @@ const Login = () => {
   const handleLogin =(e)=>{
     setLoginData({...loginData,[e.target.name]:e.target.value})
   }
-
+  
   const handleSignUp =async()=>{
     try {
       const data =await axios.post('http://localhost:3000/auth/v1/authentication/login',{
@@ -60,6 +65,7 @@ const Login = () => {
       message.info('This Admin Pannel for Admin and Merchent')
     }else{
       if(data.data.success == 'login successfully done'){
+        disptch(login(data.data))
         message.success(data.data.success);
         setLoginData('')
         setTimeout(()=>{
