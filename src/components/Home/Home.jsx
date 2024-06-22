@@ -5,7 +5,19 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 
-function getItem(label, key, icon, children, type) {
+
+const Home = () => {
+
+  const navigate = useNavigate()
+  const userData =useSelector(state=>state.userDetails.value)
+
+
+
+
+
+
+
+  function getItem(label, key, icon, children, type) {
     return {
       key,
       icon,
@@ -15,6 +27,7 @@ function getItem(label, key, icon, children, type) {
     };
   }
   const items = [
+    userData.payload.data.role == 'admin' &&
     getItem('Users ', 'sub1', <UsergroupAddOutlined style={{fontSize:30}} />, [
       getItem('Machent', '1' ,<UserSwitchOutlined style={{fontSize:20}} />),
       getItem('User', '2',<UserOutlined style={{fontSize:20}}/>)
@@ -40,11 +53,10 @@ function getItem(label, key, icon, children, type) {
     ])
   ];
 
-const Home = () => {
 
-  const navigate = useNavigate()
-  const userData =useSelector(state=>state.userDetails.value)
-  console.log(userData,'okk');
+
+
+
 
   useEffect(()=>{
     if(!userData){

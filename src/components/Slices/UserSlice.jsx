@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const userInformation = createSlice({
   name: 'users',
   initialState:{
-    value:null
+    value:localStorage.getItem('localdata') ? JSON.parse(localStorage.getItem('localdata')) : null
   },
   reducers: {
     login: (state,action) => {

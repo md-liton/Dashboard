@@ -66,6 +66,7 @@ const Login = () => {
     }else{
       if(data.data.success == 'login successfully done'){
         disptch(login(data.data))
+        localStorage.setItem('localdata',JSON.stringify(login(data)))
         message.success(data.data.success);
         setLoginData('')
         setTimeout(()=>{
